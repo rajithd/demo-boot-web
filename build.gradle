@@ -14,6 +14,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'distribution'
+apply plugin: "jacoco"
 
 jar {
 	baseName = 'demo-boot-web'
@@ -24,6 +25,13 @@ targetCompatibility = 1.8
 
 repositories {
 	mavenCentral()
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled = true
+		csv.enabled = false
+	}
 }
 
 distributions {
