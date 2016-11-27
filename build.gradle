@@ -24,7 +24,10 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
+	maven { url 'https://scm.devfactory.com/nexus/content/groups/public' }
+	maven { url 'https://scm.devfactory.com/nexus/content/repositories/df-thirdparty' }
 	mavenCentral()
+	jcenter()
 }
 
 jacocoTestReport {
@@ -43,8 +46,16 @@ distributions {
 	}
 }
 
+dependencyManagement {
+	dependencies {
+		dependency 'io.springfox:springfox-swagger2:2.4.0'
+		dependency 'io.springfox:springfox-swagger-ui:2.4.0'
+	}
+}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('io.springfox:springfox-swagger2')
+	compile('io.springfox:springfox-swagger-ui')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
